@@ -1,41 +1,39 @@
-function add (num1,num2) {
-    return num1 + num2;
+function add (number1,number2) {
+    return number1 + number2;
 }
-function subtract (num1,num2) {
-    return num1 - num2;
+function subtract (number1,number2) {
+    return number1 - number2;
 }
-function divide (num1,num2) {
-    return num1 / num2;
+function divide (number1,number2) {
+    return number1 / number2;
 }
-function multiply (num1,num2) {
-    return num1 * num2;
+function multiply (number1,number2) {
+    return number1 * number2;
 }
-// console.log(add (2,7));
-// console.log(subtract (89,33));
-// console.log(divide (32,8));
-// console.log(multiply (32,4));
 let firstNumber;
 let operator;
 let secondNumber;
 let prevValue;
 let currValue = '';
+let result = 0;
 const display = document.querySelector('.display');
-const numBtns = document.querySelectorAll('.btn.numbers');
-const oprBtns = document.querySelectorAll('.btn.operators');
-const eqlBtn = document.querySelector('.btn.equal');
-const clrBtn = document.querySelector('.btn.clr');
+const numberBtns = document.querySelectorAll('.btn.numbers');
+const operatorBtns = document.querySelectorAll('.btn.operators');
+const equalBtn = document.querySelector('.btn.equal');
+const clearBtn = document.querySelector('.btn.clear');
+const decimalBtn = document.querySelector('.btn.decimal');
 
 function operate(firstNumber,secondNumber,operator) {
-    if (operator == '+'){
+    if (operator === '+'){
         return(add(firstNumber,secondNumber));
     }
-    else if(operator == '-'){
+    else if(operator === '-'){
         return(subtract(firstNumber,secondNumber));
     }
-    else if (operator == '*') {
+    else if (operator === '*') {
         return(multiply(firstNumber,secondNumber));
     }
-    else if (operator == '/'){
+    else if (operator === '/'){
         return(divide(firstNumber,secondNumber));
     }
     else{
@@ -43,7 +41,6 @@ function operate(firstNumber,secondNumber,operator) {
     }
 }
 function clearScreen(value){
-    // console.log(prevValue);
     display.innerHTML = '';
     prevValue = '';
     currValue = '';
@@ -59,18 +56,37 @@ function storeOperator(op){
     operator = op;
     currValue = '';
 }
-numBtns.forEach(btn => {
+function operation(){
+    currValue = Number(currValue);
+    prevValue = Number(prevValue);
+    prevValue = operate(prevValue,currValue,operator);
+    prevValue = Math.round(prevValue*1000) / 1000
+    prevValue = prevValue.toString();
+    currValue = prevValue;
+}
+numberBtns.forEach(btn => {
     btn.addEventListener('click',() => {
         storeValue(btn.textContent);
         display.textContent = currValue;
     });
 });
-oprBtns.forEach(opBtn => {
+operatorBtns.forEach(opBtn => {
     opBtn.addEventListener('click',() => {
         storeOperator(opBtn.textContent);
         display.textContent = opBtn.textContent;
     });
 });
-clrBtn.addEventListener('click',() => {
+clearBtn.addEventListener('click',() => {
     clearScreen();
 })
+equalBtn.addEventListener('click',() => {
+    operation();
+    display.textContent = prevValue;
+});
+decimalBtn.addEventListener('click',() => {
+    if (!(currValue.includes('.'))){
+        currValue += '.';
+    }
+    display.textContent = currValue;
+});
+allBtns  = document.querySelectorAll('.btn');
