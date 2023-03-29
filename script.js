@@ -89,4 +89,3 @@ decimalBtn.addEventListener('click',() => {
     }
     display.textContent = currValue;
 });
-allBtns  = document.querySelectorAll('.btn');
