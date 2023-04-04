@@ -1,15 +1,19 @@
-function add (number1,number2) {
+const add = (number1,number2) => {
     return number1 + number2;
 }
-function subtract (number1,number2) {
+
+const subtract = (number1,number2) => {
     return number1 - number2;
 }
-function divide (number1,number2) {
+
+const divide = (number1,number2) => {
     return number1 / number2;
 }
-function multiply (number1,number2) {
+
+const multiply = (number1,number2) => {
     return number1 * number2;
 }
+
 let firstNumber;
 let operator;
 let secondNumber;
@@ -23,40 +27,41 @@ const equalBtn = document.querySelector('.btn.equal');
 const clearBtn = document.querySelector('.btn.clear');
 const decimalBtn = document.querySelector('.btn.decimal');
 
-function operate(firstNumber,secondNumber,operator) {
-    if (operator === '+'){
-        return(add(firstNumber,secondNumber));
-    }
-    else if(operator === '-'){
-        return(subtract(firstNumber,secondNumber));
-    }
-    else if (operator === '*') {
-        return(multiply(firstNumber,secondNumber));
-    }
-    else if (operator === '/'){
-        return(divide(firstNumber,secondNumber));
-    }
-    else{
-        return "INVALID_OPERATOR"
+const operate = (firstNumber,secondNumber,operator) => {
+    switch (operator) {
+        case '+':
+            return add(firstNumber,secondNumber);
+        case '-':
+            return subtract(firstNumber,secondNumber);
+        case '*':
+            return multiply(firstNumber,secondNumber);
+        case '/':
+            return divide(firstNumber,secondNumber);
+        default:
+            return "INVALID_OPERATOR";
     }
 }
-function clearScreen(value){
+
+const clearScreen = (value) =>{
     display.innerHTML = '';
     prevValue = '';
     currValue = '';
     operator = '';
 }
-function storeValue(value){
+
+const storeValue = (value) =>{
     if (currValue.length<=10){
         currValue += value;
     }
 }
-function storeOperator(op){
+
+const storeOperator = (op) => {
     prevValue = currValue;
     operator = op;
     currValue = '';
 }
-function operation(){
+
+const operation = () => {
     currValue = Number(currValue);
     prevValue = Number(prevValue);
     prevValue = operate(prevValue,currValue,operator);
@@ -64,25 +69,30 @@ function operation(){
     prevValue = prevValue.toString();
     currValue = prevValue;
 }
+
 numberBtns.forEach(btn => {
     btn.addEventListener('click',() => {
         storeValue(btn.textContent);
         display.textContent = currValue;
     });
 });
+
 operatorBtns.forEach(opBtn => {
     opBtn.addEventListener('click',() => {
         storeOperator(opBtn.textContent);
         display.textContent = opBtn.textContent;
     });
 });
+
 clearBtn.addEventListener('click',() => {
     clearScreen();
-})
+});
+
 equalBtn.addEventListener('click',() => {
     operation();
     display.textContent = prevValue;
 });
+
 decimalBtn.addEventListener('click',() => {
     if (!(currValue.includes('.'))){
         currValue += '.';
