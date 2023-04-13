@@ -1,5 +1,5 @@
 let firstNumber;
-let operator;
+let operator = '';
 let secondNumber;
 let prevValue;
 let currValue = '';
@@ -56,18 +56,27 @@ const storeValue = (value) =>{
 }
 
 const storeOperator = (op) => {
-    prevValue = currValue;
-    operator = op;
-    currValue = '';
+    if (operator === '') {
+        prevValue = currValue;
+        operator = op;
+        currValue = '';
+    }
+    else{
+        operation();
+        operator = op;
+        currValue = '';
+    }
 }
 
 const operation = () => {
-    currValue = Number(currValue);
-    prevValue = Number(prevValue);
-    prevValue = operate(prevValue,currValue,operator);
-    prevValue = Math.round(prevValue*1000) / 1000
-    prevValue = prevValue.toString();
-    currValue = prevValue;
+    if(prevValue!== '' || currValue!== '' || operator !== ''){
+        currValue = Number(currValue);
+        prevValue = Number(prevValue);
+        prevValue = operate(prevValue,currValue,operator);
+        prevValue = Math.round(prevValue*1000) / 1000
+        prevValue = prevValue.toString();
+        currValue = prevValue;
+    }
 }
 
 numberBtns.forEach(btn => {
