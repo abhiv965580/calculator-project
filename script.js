@@ -69,13 +69,13 @@ const storeOperator = (op) => {
 }
 
 const operation = () => {
-    if(prevValue!== '' || currValue!== '' || operator !== ''){
+    if(prevValue!== '' && currValue!== '' && operator !== ''){
         currValue = Number(currValue);
         prevValue = Number(prevValue);
         prevValue = operate(prevValue,currValue,operator);
         prevValue = Math.round(prevValue*1000) / 1000
         prevValue = prevValue.toString();
-        currValue = prevValue;
+        currValue = '';
     }
 }
 
