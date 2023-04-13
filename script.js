@@ -42,7 +42,7 @@ const operate = (firstNumber,secondNumber,operator) => {
     }
 }
 
-const clearScreen = (value) =>{
+const clearScreen = () =>{
     display.innerHTML = '';
     prevValue = '';
     currValue = '';
