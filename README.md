@@ -13,6 +13,6 @@ But, before moving on we have to press the **Equal** button to display the resul
 ### Project Link: https://www.theodinproject.com/lessons/foundations-calculator
 
 ## UI Screenshot:
-Below is the screenshot of the UI for this PR
+Below is the screenshot of the UI for this Repo
 
 ![calculator-project_](https://user-images.githubusercontent.com/128154648/228587928-edf01117-aae2-4552-8c30-620e43f9f1ef.png)
