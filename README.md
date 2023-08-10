@@ -9,7 +9,7 @@ But, before moving on we have to press the **Equal** button to display the resul
 - Also added a mouse hover effect on buttons using CSS only
 - Result screen can show up to 10 digits
 
-### Live Link: https://abhishek310001.github.io/calculator-project/
+### Live Link: https://abhiv965580.github.io/calculator-project/
 ### Project Link: https://www.theodinproject.com/lessons/foundations-calculator
 
 ## UI Screenshot:
